@@ -1,11 +1,9 @@
-const axios = require('axios');
-const axios_api = axios.create({});
+
 const { google } = require('googleapis');
 const express = require('express')
 const AuthSaveName = './google_key.json'
 const AuthSave = require(AuthSaveName);
 const BotData = require('./bot_config.json');
-const { json } = require('express');
 const app = express()
 const CLIENT_ID = AuthSave.client.id;
 const CLIENT_SECRET = AuthSave.client.secret;
@@ -15,75 +13,44 @@ const CHANNEL_ID = BotData.channelId;
 const TEXT_COMMENT = BotData.textComment;
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL)
 var authed = false;
-const youtube = google.youtube({ version: 'v3', auth: oAuth2Client })
 const fs = require('fs');
 
-/* ======== [ FUNÇÃO PARA COMENTAR UM VIDEO ] =================================================================================*/
-
-function comment(video_id, text){
-	youtube.commentThreads.insert({
-		part: 'snippet',
-		resource: {
-			kind: "youtube#commentThread",
-			snippet: {
-				videoId: video_id,
-				topLevelComment: {
-					snippet: {
-						textOriginal: text
-					}
-				}
-			}
-		}
-	}, function(err, response) {
-		if (err) {
-			console.log('The API returned an error: ' + err);
-			return;
-		}
-		var result = response.data;
-
-		console.log(JSON.stringify({
-			channelName: result.snippet.topLevelComment.snippet.authorDisplayName, 
-			comment: result.snippet.topLevelComment.snippet.textDisplay, 
-			createdAt: result.snippet.topLevelComment.snippet.publishedAt
-		}));
-
-	});
-}
 
 /* ======== [ BOT ] =================================================================================*/
 
-async function startBot() {
+const { getLastVideoId } = require('./services/getLastVideoIdService');
+const { commentVideo } = require('./services/commentVideoService')
+
+function startBot() {
+
 	let lastVideo = "";
 
 	setInterval(() => { 
 
+		getLastVideoId(CHANNEL_ID).then(response => {
+		
+			console.log(`[${response.author}] Getting id of latest video...`);
 
-		axios_api.get(`https://www.youtube.com/oembed?url=www.youtube.com/playlist?list=${CHANNEL_ID}&format=json`).then(response => {
-
-			console.log(`[${response.data.author_name}] Getting id of latest video...`);
-
-			var myarr = response.data.thumbnail_url.split("/");
-
-			if(!lastVideo)
+			if(lastVideo == "")
 			{
-				console.log(`[${response.data.author_name}] Saving id of latest video...`);
-				lastVideo = myarr[4];
+				console.log(`[${response.author}] Saving id of latest video...`);
+				lastVideo = response.videoID;
 			}
-			else if(lastVideo !== myarr[4])
+			else if(lastVideo !== response.videoID)
 			{
-				console.log(`[${response.data.author_name}] Commenting video...`);
-				comment(myarr[4], TEXT_COMMENT);
-				lastVideo = myarr[4];
-				console.log(`[${response.data.author_name}] Comment sended!`);
+				console.log(`[${response.author}] Commenting video...`);
+				commentVideo(response.videoID, TEXT_COMMENT);
+				lastVideo = response.videoID;
+				console.log(`[${response.author}] Comment sended!`);
 			}
-			else if(lastVideo == myarr[4])
+			else if(lastVideo == response.videoID)
 			{
-				console.log(`[${response.data.author_name}] No new videos found or the comment already been sended!`);
+				console.log(`[${response.author}] No new videos found or the comment already been sended!`);
 			}
-
-		});
+			
+		})
 	}, REFRESH);
-
+	
 }
 
 /* ======== [ REDIRECIONA PARA O LOGIN OU INICIA O BOT ] =================================================================================*/
