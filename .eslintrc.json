@@ -18,7 +18,7 @@
         "prettier"
     ],
     "rules": {
-        "no-var-requires": false,
+        "@typescript-eslint/no-var-requires": 0,
         "class-methods-use-this": "off",
         "no-console": "off",
         "no-use-before-define": "off",
