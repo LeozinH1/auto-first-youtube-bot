@@ -1,5 +1,3 @@
-![visitors](https://visitor-badge.glitch.me/badge?page_id=${leozinh1}.${auto-first-youtube-bot}) 
-
 # Auto First Youtube Bot
 
 [**DEMO**](https://youtu.be/IRIcIMC1bMQ "DEMO")
