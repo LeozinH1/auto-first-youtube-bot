@@ -3,8 +3,5 @@
         "id": "",
         "secret": "",
         "redirect": "http://localhost:3000/auth/google/callback"
-    },
-    "credentials": {
-
     }
 }
