@@ -1,7 +1,5 @@
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=${leozinh1}.${auto-first-youtube-bot}) 
 
-[![Discord](https://img.shields.io/discord/591914197219016707.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/5qnNgKpZ)
-
 # Auto First Youtube Bot
 
 [**DEMO**](https://youtu.be/IRIcIMC1bMQ "DEMO")
