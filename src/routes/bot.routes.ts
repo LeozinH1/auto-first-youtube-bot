@@ -18,7 +18,7 @@ const oAuth2Client = new google.auth.OAuth2(
     REDIRECT_URL,
 );
 
-async function getUserInfo(accessToken : string) {
+async function getUserInfo() {
     const googleuser = google.oauth2({ auth: oAuth2Client, version: 'v2' });
     const res = await googleuser.userinfo.get({});
     return res.data;
@@ -28,9 +28,8 @@ botRouter.get('/', (req, res) => {
     const accessToken = localStorage.getItem('access_token');
 
     if (accessToken) {
-
-        oAuth2Client.setCredentials({ access_token : accessToken });
-        getUserInfo(accessToken).then(response => {
+        oAuth2Client.setCredentials({ access_token: accessToken });
+        getUserInfo().then(response => {
             if (response) {
                 res.send(
                     `${response.email} <a href='auth/google/logout'><button>logout</button></a>`,
@@ -44,7 +43,6 @@ botRouter.get('/', (req, res) => {
     } else {
         res.send("<a href='auth/google/login'><button>login</button></a>");
     }
-
 });
 
 export default botRouter;

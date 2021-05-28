@@ -24,7 +24,7 @@ const bot = new BotService();
 
 authRouter.get('/logout', (req, res) => {
     const accessToken = localStorage.getItem('access_token');
-    oAuth2Client.setCredentials({ access_token : accessToken });
+    oAuth2Client.setCredentials({ access_token: accessToken });
     oAuth2Client.revokeCredentials((err, body) => {
         if (err) {
             console.log(err.message);

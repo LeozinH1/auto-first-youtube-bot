@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const axios_api = axios.create({});
+const axiosApi = axios.create({});
 
 interface Response {
     videoID: string;
@@ -9,7 +9,7 @@ interface Response {
 
 class getLatestVideoIdService {
     public async execute(channelId: string): Promise<Response> {
-        const response = await axios_api.get(
+        const response = await axiosApi.get(
             `https://www.youtube.com/oembed?url=www.youtube.com/playlist?list=${channelId}&format=json`,
         );
         const videoID = response.data.thumbnail_url.split('/')[4];

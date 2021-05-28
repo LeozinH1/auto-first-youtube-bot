@@ -15,10 +15,9 @@ interface Response {
 
 class commentVideoService {
     public async execute({ videoID, text }: Request): Promise<Response> {
-
         const oAuth2Client = new google.auth.OAuth2();
         const accessToken = localStorage.getItem('access_token');
-        oAuth2Client.setCredentials({ access_token : accessToken });
+        oAuth2Client.setCredentials({ access_token: accessToken });
         const youtube = google.youtube({ version: 'v3', auth: oAuth2Client });
 
         const response = await youtube.commentThreads.insert({
@@ -36,7 +35,7 @@ class commentVideoService {
             },
         });
 
-        const data = response.data;
+        const { data } = response;
 
         const result = {
             channelName: data.snippet.topLevelComment.snippet.authorDisplayName,
@@ -44,7 +43,9 @@ class commentVideoService {
             createdAt: data.snippet.topLevelComment.snippet.publishedAt,
         };
 
-        console.log(`✅ Comment posted! You commented "${result.comment}" in the channel "${result.channelName}" at ${result.createdAt}`);
+        console.log(
+            `✅ Comment posted! You commented "${result.comment}" in the channel "${result.channelName}" at ${result.createdAt}`,
+        );
 
         return result;
     }
