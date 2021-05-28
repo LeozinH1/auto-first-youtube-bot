@@ -25,7 +25,7 @@ youtube.commentThreads.insert({
 		}
 	}, (err, response) => {
 		if (err) {
-			console.log('The API returned an error: ' + err);
+			console.log('[ BOT ] The API returned an error: ' + err);
 			return;
 		}
 
@@ -37,7 +37,7 @@ youtube.commentThreads.insert({
 			createdAt: data.snippet.topLevelComment.snippet.publishedAt
 		}
 
-		console.log(result)
+		console.log('[ BOT ] ' + result)
 
         return result;
 
