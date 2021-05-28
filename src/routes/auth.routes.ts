@@ -61,6 +61,8 @@ authRouter.get('/callback', (req, res) => {
     }
 });
 
+/* ======== [ LOGIN ] =========================================================================== */
+
 authRouter.get('/login', (req, res) => {
     if (!localStorage.getItem('access_token')) {
         const url = oAuth2Client.generateAuthUrl({
