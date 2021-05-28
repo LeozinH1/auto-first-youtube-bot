@@ -1,5 +1,6 @@
 # Auto First Youtube Bot
 
+[**DEMO**](https://youtu.be/IRIcIMC1bMQ "DEMO")
 This bot checks if a predefined YouTube channel has uploaded a new video, if a recent upload is detected, a comment is created on the uploaded video.
 
 # Requirements
