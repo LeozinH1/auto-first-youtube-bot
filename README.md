@@ -1,7 +1,5 @@
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=${leozinh1}.${auto-first-youtube-bot}) 
 
-[![Github all releases](https://img.shields.io/github/downloads/Naereen/StrapDown.js/total.svg)](https://GitHub.com/LeozinH1/auto-first-youtube-bot/releases/)
-
 # Auto First Youtube Bot
 
 [**DEMO**](https://youtu.be/IRIcIMC1bMQ "DEMO")
