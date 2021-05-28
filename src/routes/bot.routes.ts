@@ -1,16 +1,16 @@
 import { Router } from 'express';
 
-const botRouter = Router();
+const localStorage = require('localStorage');
+
+const { google } = require('googleapis');
 
 const AuthSave = require('../config/google_key.json');
+
+const botRouter = Router();
 
 const CLIENT_ID = AuthSave.client.id;
 const CLIENT_SECRET = AuthSave.client.secret;
 const REDIRECT_URL = AuthSave.client.redirect;
-
-const { google } = require('googleapis');
-
-const localStorage = require('localStorage');
 
 const oAuth2Client = new google.auth.OAuth2(
     CLIENT_ID,
