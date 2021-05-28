@@ -35,12 +35,12 @@ class commentVideoService {
             },
         });
 
-        const { data } = response;
+        const _data = response.data;
 
         const result = {
-            channelName: data.snippet.topLevelComment.snippet.authorDisplayName,
-            comment: data.snippet.topLevelComment.snippet.textDisplay,
-            createdAt: data.snippet.topLevelComment.snippet.publishedAt,
+            channelName: _data.snippet.topLevelComment.snippet.authorDisplayName,
+            comment: _data.snippet.topLevelComment.snippet.textDisplay,
+            createdAt: _data.snippet.topLevelComment.snippet.publishedAt,
         };
 
         console.log(
