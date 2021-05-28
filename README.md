@@ -4,7 +4,7 @@ This bot checks if a predefined YouTube channel has uploaded a new video, if a r
 
 # Requirements
 
-Node.js installed on the computer
+[Node.js](https://nodejs.org/ "Node.js") installed on the computer
 
 # Usage
 
