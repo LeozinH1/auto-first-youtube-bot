@@ -44,7 +44,7 @@ class commentVideoService {
         };
 
         console.log(
-            `✅ Comment posted! You commented "${result.comment}" in the channel "${result.channelName}" at ${result.createdAt}`,
+            `✅ Comment posted! You commented "${result.comment}" with the account "${result.channelName}" at ${result.createdAt}`,
         );
 
         return result;
