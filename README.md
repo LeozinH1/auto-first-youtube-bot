@@ -11,7 +11,7 @@ This bot checks if a predefined YouTube channel has uploaded a new video, if a r
 1. Get your credentials (**client id** and **client secret key**) from the [Google API](https://console.developers.google.com "Google API") website
 2. Put this information in the file **google_key.json**
 3. Setup bot_config.json (Read before **How to get the Channel ID**) 
-4. Open folder with cmd and run **npm i**, after this, run **node index**
+4. Open folder with cmd and run `npm i`, after this, run `node index`
 5. Access http://localhost:3000 and login
 6. After login, the bot will start to work!
 
