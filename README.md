@@ -20,5 +20,5 @@ This bot checks if a predefined YouTube channel has uploaded a new video, if a r
 # How to get the Channel ID
 1. Access the channel you want to comment on
 2. Click on **Videos** section and after that **Play All**
-3. Copy the id that is in **&list=**
+3. Copy the id that is in **&list=** in the url
 4. **Example**: https://www.youtube.com/watch?v=IRIcIMC1bMQ&list=UUrfluf17A1AsyOEZWpFzK2w&index=2. The ID is **UUrfluf17A1AsyOEZWpFzK2w**
